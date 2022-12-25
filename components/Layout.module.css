@@ -1,0 +1,50 @@
+/*header*/
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0.7rem 0.4rem 0.4rem 0.7rem;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    background-color: #FFFFFF;
+    box-shadow: 0 0 6px 0 gray;
+}
+
+
+
+
+/*検索*/
+.search_container {
+    box-sizing: border-box;
+    position: relative;
+    border: 2px solid #3879D9;
+    padding: 3px 10px;
+    border-radius: 0px;
+    height: 2.3em;
+    width: 120%;
+    overflow: hidden;
+    text-align: left;
+
+}
+
+.search_container input[type="text"] {
+    border: none;
+
+}
+
+.search_container input[type="submit"] {
+    cursor: pointer;
+    font-family: FontAwesome;
+    border: 2px solid #3879D9;
+    background: #3879D9;
+    color: #fff;
+    position: absolute;
+    width: 4.0em;
+    height: 3.0em;
+    right: -1px;
+    top: -5px;
+
+}

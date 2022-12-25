@@ -1,0 +1,108 @@
+.dt {
+    font-weight: bold;
+}
+
+.topi_time {
+    margin: 0 0 11px 0;
+    font-size: .6875rem;
+}
+
+.topi_time::after {
+    content: "NEW";
+    background-color: #FFAA01;
+    color: #fff;
+    font-size: .6875rem;
+    font-weight: bold;
+    min-width: 10px;
+    padding: 3px 7px;
+    margin: 0px 5px;
+    line-height: 1;
+    vertical-align: middle;
+    white-space: nowrap;
+    text-align: center;
+    border-radius: 10px;
+    display: inline-block;
+}
+
+/*トピ詳細*/
+
+.article_main {
+    padding: 6px 6px 6px 6px;
+}
+
+.article_detail {
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+.article_detail_img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+}
+
+.article_title {
+    font-size: 1rem;
+    font-weight: 700;
+    padding: 6px 0 0 0;
+    margin: auto;
+}
+
+.article_lead {
+    padding: 0 0 20px 0;
+}
+
+.article_detail_text {
+    font-size: 1rem;
+    margin: auto;
+}
+
+.kokopoi::after {
+    content: "ココがポイント";
+    background-color: #3474CE;
+    color: #fff;
+    font-size: .6875rem;
+    font-weight: bold;
+    min-width: 10px;
+    padding: 3px 7px;
+    margin: 0px 5px;
+    line-height: 1;
+    vertical-align: middle;
+    white-space: nowrap;
+    text-align: center;
+    border-radius: 10px;
+    display: inline-block;
+}
+
+.kokopoi_detail {
+    border-left: 1px solid #EBEBEB;
+    padding: 2px 8px;
+}
+
+.kokopoi_detail_qa {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+}
+
+.img_center {
+    margin: auto;
+}
+
+
+
+/* JSX追記 */
+.image_container {
+    padding: 5px 5px;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.image_container .image {
+    width: 100%;
+    height: 100%;
+    position: relative !important;
+    object-fit: cover;
+}

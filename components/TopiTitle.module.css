@@ -1,0 +1,68 @@
+/*トピ見出し*/
+.article {
+    display: flex;
+    flex-wrap: nowrap;
+    padding: 6px 5px 3px 5px;
+}
+
+.topi {
+    border-bottom: 1px solid #EBEBEB;
+    width: 100%;
+    padding: 5px 0 0 5px;
+}
+
+
+.topi_title {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.topi_time {
+    margin: 0 0 5px 0;
+    font-size: .6875rem;
+}
+
+.topi_time::after {
+    content: "NEW";
+    background-color: #FFAA01;
+    color: #fff;
+    font-size: .6875rem;
+    font-weight: bold;
+    min-width: 10px;
+    padding: 3px 7px;
+    margin: 0px 5px;
+    line-height: 1;
+    vertical-align: middle;
+    white-space: nowrap;
+    text-align: center;
+    border-radius: 10px;
+    display: inline-block;
+}
+
+.topi_time_special {
+    font-size: .6875rem;
+}
+
+.topi_time_special::after {
+    content: "あなたにオススメ";
+    background-color: #FB6672;
+    color: #fff;
+    font-size: .6875rem;
+    font-weight: bold;
+    min-width: 10px;
+    padding: 3px 7px;
+    margin: 0px 5px;
+    line-height: 1;
+    vertical-align: middle;
+    white-space: nowrap;
+    text-align: center;
+    border-radius: 10px;
+    display: inline-block;
+}
+
+.HlMidashi,
+.HlMidashi:hover,
+.HlMidashi:visited {
+    color: inherit;
+}
