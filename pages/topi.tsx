@@ -1,41 +1,39 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import classes from 'components/TopiTitle.module.css'
+import { FC } from 'react'
 
 //supabase用追加
 import { useRouter } from "next/router"
-import { NextPage } from "next"
+
 // ★（SSG）
 import { GetStaticProps } from "next"
 
 import { supabase } from "../utils/supabase"
-import { User_Topi } from "../types/types"
+
 import { Layout } from "../components/Layout"
 
 
 
 
-export const getStaticProps: GetStaticProps=async () => {
-    console.log('getStaticProps/ssg invoked')
+// export const getStaticProps: GetStaticProps=async () => {
+//     console.log('getStaticProps/ssg invoked')
     
-    const { data: user_topi } = await supabase
-        .from('user_topis')
-        .select('*')
-        .order('created_at', { ascending: true })
+//     const { data: user_topi } = await supabase
+//         .from('user_topis')
+//         .select('*')
+//         .order('created_at', { ascending: true })
     
     
-    return { props: { user_topi } }
-}
+//     return { props: { user_topi } }
+// }
 
 
 
-type StaticProps = {
-    user_topi: User_Topi[]
-}
 
 
-const TopiTitle: NextPage<StaticProps> = ({ user_topi }) => {
-    console.log(user_topi)
+const TopiTitle: FC = () => {
+
     // トピ情報の配列
     const topis = [
         {
@@ -71,17 +69,17 @@ const TopiTitle: NextPage<StaticProps> = ({ user_topi }) => {
             phototitle: 'るんば',
             photo: '/img/holiday.jpg'
         },
-        {
-            id: 6,
-            title:`${user_topi[0].title}`,
-            titleImg: '/img/holiday.jpg',
-            meinImg: '/img/ring_photo.jpg',
-            lead: `${user_topi[0].body}`,
-            question: `${user_topi[0].question}`,
-            answer:  `${user_topi[0].answer}`,
-            phototitle: `${user_topi[0].emb_title}`,
-            photo: '/img/holiday.jpg'
-        },
+        // {
+        //     id: 6,
+        //     title:`${user_topi[0].title}`,
+        //     titleImg: '/img/holiday.jpg',
+        //     meinImg: '/img/ring_photo.jpg',
+        //     lead: `${user_topi[0].body}`,
+        //     question: `${user_topi[0].question}`,
+        //     answer:  `${user_topi[0].answer}`,
+        //     phototitle: `${user_topi[0].emb_title}`,
+        //     photo: '/img/holiday.jpg'
+        // },
     ];
 
     return (

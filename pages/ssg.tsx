@@ -5,34 +5,33 @@ import { NextPage } from "next"
 import { GetStaticProps } from "next"
 
 import { supabase } from "../utils/supabase"
-import { User_Topi } from "../types/types"
 import { Layout } from "../components/Layout"
 
 
 //★データ取得
-export const getStaticProps: GetStaticProps=async () => {
-    console.log('getStaticProps/ssg invoked')
+// export const getStaticProps: GetStaticProps=async () => {
+//     console.log('getStaticProps/ssg invoked')
     
-    const { data: topis } = await supabase
-        .from('user_topis')
-        .select('*')
-        .order('created_at', { ascending: true })
+//     const { data: topis } = await supabase
+//         .from('user_topis')
+//         .select('*')
+//         .order('created_at', { ascending: true })
     
     
-    return{props:{topis}}
-}
+//     return{props:{topis}}
+// }
 
-type StaticProps = {
-    topis: User_Topi[]
-}
+// type StaticProps = {
+//     topis: User_Topi[]
+// }
 
-const Ssg: NextPage<StaticProps> = ({ topis }) => {
-    console.log(topis);
-    return (
-        <div>
-            {topis[0].title}
-        </div>
-    )     
-  }
+// const Ssg: NextPage<StaticProps> = ({ topis }) => {
+//     console.log(topis);
+//     return (
+//         <div>
+//             {topis[0].title}
+//         </div>
+//     )     
+//   }
 
-export default Ssg
+// export default Ssg
