@@ -5,6 +5,7 @@ import { FC } from "react"
 import Image from "next/image"
 import { CameraIcon } from "@heroicons/react/solid"
 import { format } from "date-fns"
+import ja from "date-fns/locale/ja"
 import useStore from "../store"
 import { useQueryTopi } from "../hooks/useQueryTopi"
 import { useMutateTopi } from "../hooks/useMutateTopi"
@@ -53,9 +54,10 @@ export const SpecialTopiTitle: FC = () => {
             answer:  `${topi?.answer}`,
             phototitle: `${topi?.emb_title}`,
             photo: `${embUrl}`,
+            created_at: `${topi?.created_at}`
         },]
     
-        return (
+    return (
         <>
             {topis.map((topi) => {
                 const topiInfo = {
@@ -67,9 +69,11 @@ export const SpecialTopiTitle: FC = () => {
                     question: topi.question,
                     answer: topi.answer,
                     phototitle: topi.phototitle,
-                    photo: topi.photo
+                    photo: topi.photo,
+                    created_at: topi.created_at
                 };
 
+                console.log(topiInfo.created_at)
                 return (
                     <div key={topi.id}>
                         <Link as={`articles/${topi.id}`} href={{ pathname: `articles/[article]`, query: topiInfo }}>
@@ -80,7 +84,7 @@ export const SpecialTopiTitle: FC = () => {
 
                                 <div className={classes.topi}>
                                     <h1 className={classes.topi_title}>{topiInfo.title}</h1>
-                                    <p className={classes.topi_time_special}>11/17（金）17:29</p>
+                                    {topiInfo.created_at && (<p className={classes.topi_time_special}>{format(new Date(topiInfo.created_at), 'MM/dd(E) HH:mm', { locale: ja })}</p>)}
                                 </div>
                             </article>
                         </Link>

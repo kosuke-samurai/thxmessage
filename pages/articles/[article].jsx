@@ -9,6 +9,9 @@ import AssignmentIcon from '@mui/icons-material/Assignment';
 
 import { useRouter } from 'next/router';
 
+import { format } from "date-fns"
+import ja from "date-fns/locale/ja"
+
 export default function Article() {
 
     const router = useRouter();
@@ -27,7 +30,8 @@ export default function Article() {
 
                     <div className=''>
                         <h1 className={classes.article_title}>{router.query.title}</h1>
-                        <p className={classes.topi_time}>11/17（金）17:29</p>
+                        {/* <p className={classes.topi_time}>11/17（金）17:29</p> */}
+                        {router.query.created_at && (<p className={classes.topi_time}>{format(new Date(router.query.created_at), 'MM/dd(E) HH:mm', { locale: ja })}</p>)}
                     </div>
 
                 </div>

@@ -20,13 +20,18 @@ const queryClient = new QueryClient({
 })
 
 export default function App({ Component, pageProps }: AppProps) {
+  
+  //リダイレクト関連↓
   const { push, pathname } = useRouter()
 
   const validateSession = async () => {
   const user = supabase.auth.user()
   if (user && pathname === '/login') {
   push('/')
-} else if (!user && (pathname !== '/login' && pathname !== '/admin/adminlogin' && pathname !== '/admin/dashboad')) {
+  } if (user && pathname === '/admin/adminlogin') {
+   push('/admin/dashboad') 
+  }
+  else if (!user && pathname !== '/login' && pathname !== '/admin/adminlogin' && pathname !== '/admin/dashboad') {
   await push('/login')
     }
   }
@@ -35,6 +40,9 @@ export default function App({ Component, pageProps }: AppProps) {
     if (event === 'SIGNED_IN' && pathname === '/login') {
       push('/')
     }
+    if (event === 'SIGNED_IN' && pathname === '/admin/adminlogin') {
+      push('/admin/dashboad')
+    }
     if (event === 'SIGNED_OUT') {
       push('/login')
     }
@@ -42,6 +50,7 @@ export default function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
     validateSession()
   }, [])
+   //リダイレクト関連↑
 
   return (
     <QueryClientProvider client={queryClient}>

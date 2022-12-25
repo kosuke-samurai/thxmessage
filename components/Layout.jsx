@@ -16,6 +16,8 @@ import HomeIcon from '@mui/icons-material/Home';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { supabase } from '../utils/supabase';
 
+//フッダー
+import {Hooter} from './Hooter'
 
 //追記
 import useStore from '../store';
@@ -86,16 +88,12 @@ export function Layout({ children }) {
                     </ButtonGroup>
                 </Typography>
 
-                {/* <form action="{{ route('logout') }}" method="POST">
-          @csrf 
-          <button type="submit" className={classes.logout_button}>
-            <Image src="/img/header/logout16.jpg" alt="" width={72} height={16} />
-            <p classNames={classes.logout}> ログアウト </p>
-          </button>
-        </form> */}
+
             </header>
 
             <main>{children}</main>
+
+            <footer><Hooter/></footer>
         </div>
     )
 }

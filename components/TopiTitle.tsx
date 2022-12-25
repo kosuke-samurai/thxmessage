@@ -2,6 +2,9 @@ import Image from 'next/image'
 import Link from 'next/link'
 import classes from 'components/TopiTitle.module.css'
 
+import { format } from "date-fns"
+import ja from "date-fns/locale/ja"
+
 
 
 export const TopiTitle = () => {
@@ -17,7 +20,8 @@ export const TopiTitle = () => {
             question: 'どんな人物？',
             answer: '東京都出身。高校時代はラグビー部の主将を務めた。東京都出身。高校時代はラグビー部の主将を務めた。東京都出身。高校時代はラグビー部の主将を務めた。東京都出身。高校時代はラグビー部の主将を務めた。',
             phototitle: '思い出の写真',
-            photo: '/img/holiday.jpg'
+            photo: '/img/holiday.jpg',
+            created_at: '2022-12-26T09:17:06.220499+00:00'
         },
         {
             id: 2,
@@ -28,7 +32,8 @@ export const TopiTitle = () => {
             question: 'どんな人物？',
             answer: '東京都出身。高校時代はラグビー部の主将を務めた。東京都出身。高校時代はラグビー部の主将を務めた。東京都出身。高校時代はラグビー部の主将を務めた。東京都出身。高校時代はラグビー部の主将を務めた。',
             phototitle: '思い出の写真',
-            photo: '/img/holiday.jpg'
+            photo: '/img/holiday.jpg',
+            created_at: '2022-12-26T09:17:06.220499+00:00'
         },
         {
             id: 3,
@@ -39,7 +44,8 @@ export const TopiTitle = () => {
             question: 'どんな人物？',
             answer: '東京都出身。高校時代はラグビー部の主将を務めた。東京都出身。高校時代はラグビー部の主将を務めた。東京都出身。高校時代はラグビー部の主将を務めた。東京都出身。高校時代はラグビー部の主将を務めた。',
             phototitle: 'るんば',
-            photo: '/img/holiday.jpg'
+            photo: '/img/holiday.jpg',
+            created_at: '2022-12-26T09:17:06.220499+00:00'
         },
 
     ];
@@ -56,7 +62,8 @@ export const TopiTitle = () => {
                     question: topi.question,
                     answer: topi.answer,
                     phototitle: topi.phototitle,
-                    photo: topi.photo
+                    photo: topi.photo,
+                    created_at: topi.created_at
                 };
 
                 return (
@@ -69,7 +76,7 @@ export const TopiTitle = () => {
 
                                 <div className={classes.topi}>
                                     <h1 className={classes.topi_title}>{topiInfo.title}</h1>
-                                    <p className={classes.topi_time}>11/17（金）17:29</p>
+                                     {topiInfo.created_at && (<p className={classes.topi_time}>{format(new Date(topiInfo.created_at), 'MM/dd(E) HH:mm', { locale: ja })}</p>)}
                                 </div>
                             </article>
                         </Link>
