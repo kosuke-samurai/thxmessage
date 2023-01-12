@@ -6,6 +6,10 @@ import useStore from "../store"
 import { useEffect } from "react"
 import { supabase } from '../utils/supabase'
 
+import { Suspense } from 'react'
+import { ErrorBoundary } from 'react-error-boundary'
+import { ExclamationCircleIcon } from '@heroicons/react/solid'
+import { Spinner } from '../components/Sppiner'
 
 //グロナビ
 import { Glonavi } from '../components/Glonavi'
@@ -26,11 +30,15 @@ export default function Home() {
     },[setSession])
   
   return (
-    <Layout>
+  
+
+    
+        <Layout>
       {/* グロナビ */}
       <Glonavi />
       {/* タブ */}
       <SwiperTab />
-   </Layout>
+        </Layout>
+
   )
 }

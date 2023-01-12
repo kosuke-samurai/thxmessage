@@ -12,6 +12,9 @@ import { useUploadHiImg } from "../hooks/useUploadHiImg"
 import { useUploadMainImg } from "../hooks/useUploadMainImg"
 import { Spinner } from "./Sppiner"
 
+//トリミング
+import ReactCrop from "react-image-crop/dist/ReactCrop";
+
 export const UserTopi: FC = () => {
   const session = useStore((state) => state.session)
   const editedTopi = useStore((state) => state.editedTopi)
@@ -121,7 +124,13 @@ export const UserTopi: FC = () => {
           id="hi"
           accept="image/*"
           onChange={(e) => useMutateUploadHiImg.mutate(e)}
-            />
+          />
+        {/* {hiUrl && (
+          <ReactCrop
+            src={hiUrl}
+          onChange={(e) => update({ ...editedTopi, hi_img: e.target.files })}
+          />
+        )} */}
      </div>
 
       <div className="mb-8">

@@ -3,7 +3,6 @@ import classes from './TopiTitle.module.css'
 
 import { FC } from "react"
 import Image from "next/image"
-import { CameraIcon } from "@heroicons/react/solid"
 import { format } from "date-fns"
 import ja from "date-fns/locale/ja"
 import useStore from "../store"
@@ -13,18 +12,20 @@ import { useDownloadUrl } from "../hooks/useDownloadUrl"
 import { useUploadEmbImg } from "../hooks/useUploadEmbImg"
 import { useUploadHiImg } from "../hooks/useUploadHiImg"
 import { useUploadMainImg } from "../hooks/useUploadMainImg"
-import { Spinner } from "./Sppiner"
+import { GetStaticProps } from "next"
 
-export const SpecialTopiTitle: FC = () => {
+import { Suspense } from 'react'
+import { ErrorBoundary } from 'react-error-boundary'
+import { ExclamationCircleIcon } from '@heroicons/react/solid'
+import { Spinner } from '../components/Sppiner'
+
+export const SpecialTopiTitle:FC = () => {
   const session = useStore((state) => state.session)
   const editedTopi = useStore((state) => state.editedTopi)
   const update = useStore((state)=> state.updateEditedTopi)
   
   const { data: topi } = useQueryTopi()
-  const { updateTopiMutation } = useMutateTopi()
-  const { useMutateUploadHiImg } = useUploadHiImg()
-  const { useMutateUploadMainImg } = useUploadMainImg()
-  const { useMutateUploadEmbImg } = useUploadEmbImg()
+ 
 
   // const { fullUrl: hiUrl, isLoading } = useDownloadUrl(
   const { fullUrl: hiUrl, isLoading } = useDownloadUrl(
@@ -57,6 +58,8 @@ export const SpecialTopiTitle: FC = () => {
             created_at: `${topi?.created_at}`
         },]
     
+    console.log(topis)
+    
     return (
         <>
             {topis.map((topi) => {
@@ -70,12 +73,14 @@ export const SpecialTopiTitle: FC = () => {
                     answer: topi.answer,
                     phototitle: topi.phototitle,
                     photo: topi.photo,
-                    created_at: topi.created_at
+                    created_at: topi.created_at,
                 };
 
                 console.log(topiInfo.created_at)
                 return (
                     <div key={topi.id}>
+
+{topiInfo.created_at === 'undefined' ?  <Spinner /> :
                         <Link as={`articles/${topi.id}`} href={{ pathname: `articles/[article]`, query: topiInfo }}>
                             <article className={classes.article}>
                                 <div>
@@ -83,14 +88,18 @@ export const SpecialTopiTitle: FC = () => {
                                 </div>
 
                                 <div className={classes.topi}>
+
                                     <h1 className={classes.topi_title}>{topiInfo.title}</h1>
-                                    {topiInfo.created_at && (<p className={classes.topi_time_special}>{format(new Date(topiInfo.created_at), 'MM/dd(E) HH:mm', { locale: ja })}</p>)}
+                                     {topiInfo.created_at && (<p className={classes.topi_time_special}>{format(new Date(topiInfo.created_at), 'MM/dd(E) HH:mm', { locale: ja })}</p>)} 
+
                                 </div>
                             </article>
                         </Link>
+            }
                     </div>
                 )
             })}
+
 
             </>
             

@@ -30,9 +30,15 @@ const Dashboad: FC = () => {
     return (
       <>
         {!session ? <AdminAuth /> :
-          <div>
-        <LogoutIcon className="mb-6 h-6 w-6 cursor-pointer text-blue-500"
-        onClick={signOut}/>
+          <div className="flex flex-col items-center">
+            <div className="flex">
+            <div className="flex-none">
+            <LogoutIcon className="mb-6 h-6 w-6 cursor-pointer text-blue-500"
+                onClick={signOut} />
+            </div>
+              <p className="flex-initial text-sm">ログアウトする</p>
+            </div>
+         
       
         <div className="flex flex-col items-center">
           <ErrorBoundary
