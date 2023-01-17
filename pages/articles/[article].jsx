@@ -1,16 +1,13 @@
 import * as React from 'react';
 import Image from 'next/image';
 import { Layout } from '../../components/Layout'
-
-
 import classes from 'styles/article.module.css'
-
 import AssignmentIcon from '@mui/icons-material/Assignment';
-
 import { useRouter } from 'next/router';
-
 import { format } from "date-fns"
 import ja from "date-fns/locale/ja"
+
+
 
 export default function Article() {
 

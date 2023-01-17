@@ -43,65 +43,31 @@ export const SpecialTopiTitle:FC = () => {
     'emb'
   )
 
-    
-    const topis = [
-        {
-            id: `${topi?.id}`,
-            title: `${topi?.title}`,
-            titleImg: `${hiUrl}`,
-            meinImg: `${mainUrl}`,
-            lead: `${topi?.body}`,
-            question: `${topi?.question}`,
-            answer:  `${topi?.answer}`,
-            phototitle: `${topi?.emb_title}`,
-            photo: `${embUrl}`,
-            created_at: `${topi?.created_at}`
-        },]
-    
-    console.log(topis)
+
     
     return (
         <>
-           {topis.map((topi) => {
-                const topiInfo = {
-                    id: topi.id,
-                    title: topi.title,
-                    titleImg: topi.titleImg,
-                    meinImg: topi.meinImg,
-                    lead: topi.lead,
-                    question: topi.question,
-                    answer: topi.answer,
-                    phototitle: topi.phototitle,
-                    photo: topi.photo,
-                    created_at: topi.created_at,
-                };
 
-                console.log(topiInfo.created_at)
-                return ( 
             
-                    <div key={topi.id}>
+                    <div key={topi?.id}>
 
-{topiInfo?.created_at === 'undefined' ?  <Spinner /> :
-                        <Link as={`articles/${topi.id}`} href={{ pathname: `articles/[article]`, query: topiInfo }}>
+{topi?.created_at === 'undefined' ?  <Spinner /> :
+                        <Link href='/specialArticle'>
                             <article className={classes.article}>
                                 <div>
-                                    <Image src={topiInfo.titleImg} alt="" width={52} height={52} />
+                                    <Image src={hiUrl} alt='hi' width={52} height={52} />
                                 </div>
 
                                 <div className={classes.topi}>
 
-                                    <h1 className={classes.topi_title}>{topiInfo.title}</h1>
-                                     {topiInfo.created_at && (<p className={classes.topi_time_special}>{format(new Date(topiInfo.created_at), 'MM/dd(E) HH:mm', { locale: ja })}</p>)} 
+                                    <h1 className={classes.topi_title}>{topi?.title}</h1>
+                                     {topi?.created_at && (<p className={classes.topi_time_special}>{format(new Date(topi?.created_at), 'MM/dd(E) HH:mm', { locale: ja })}</p>)} 
 
                                 </div>
                             </article>
                         </Link>
             }
                     </div>
-                 )
-            })} 
-
-
             </>
             
                 )
