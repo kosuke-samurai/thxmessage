@@ -18,6 +18,7 @@ import { SwiperTab } from '../components/SwiperTab'
 
 //追記
 import { AdminAuth } from "../components/AdminAuth"
+import Auth  from './login'
 
 
 const Home: FC = () => {
@@ -38,7 +39,7 @@ const Home: FC = () => {
   
   return (
   <>
-    {!session ? <AdminAuth /> :
+    {!session ? <Auth /> :
       <Layout>
       
         <ErrorBoundary
