@@ -23,7 +23,7 @@ import Auth from './login'
 import { SpecialArticleTopi } from '../components/SpecialArticleTopi'
 
 
-const specialArticle: FC = () => {
+const SpecialArticle: FC = () => {
   //セッション判定
   const session = useStore((state) => state.session)
   const setSession = useStore((state) => state.setSession)
@@ -60,4 +60,4 @@ const specialArticle: FC = () => {
   )
 }
 
-export default specialArticle
+export default SpecialArticle
