@@ -4,9 +4,9 @@ import { Layout } from '../components/Layout'
 import styles from '../styles/Home.module.css'
 import useStore from "../store"
 import { useEffect } from "react"
-import { supabase } from '../utils/supabase'
+import { supabase } from '../utils/supabase' 
 
-import { Suspense } from 'react'
+import { FC, Suspense } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 import { ExclamationCircleIcon } from '@heroicons/react/solid'
 import { Spinner } from '../components/Sppiner'
@@ -16,29 +16,54 @@ import { Glonavi } from '../components/Glonavi'
 // タブ
 import { SwiperTab } from '../components/SwiperTab'
 
+//追記
+import { AdminAuth } from "../components/AdminAuth"
 
 
-export default function Home() {
+const Home: FC = () => {
+  //セッション判定
   const session = useStore((state) => state.session)
   const setSession = useStore((state) => state.setSession)
-    useEffect(() => {
+  useEffect(() => {
     setSession(supabase.auth.session())
     supabase.auth.onAuthStateChange((_event, session) => {
       setSession(session)
-    }
-    )
-    },[setSession])
+    })
+  }, [setSession])
+
+
+  const signOut = () => {
+    supabase.auth.signOut()
+  }
   
   return (
-  
+  <>
+    {!session ? <AdminAuth /> :
+      <Layout>
+      
+        <ErrorBoundary
+          fallback={
+            <ExclamationCircleIcon className='my-5 h-10 w-10 text-pink-500' />} >
+          <Suspense fallback={<Spinner />}>
+            {/* グロナビ */}
+            <Glonavi />
+          </Suspense >
+        </ErrorBoundary>
+      
+        <ErrorBoundary
+          fallback={
+            <ExclamationCircleIcon className='my-5 h-10 w-10 text-pink-500' />} >
+          <Suspense fallback={<Spinner />}>
+            {/* タブ */}
+            <SwiperTab />
+          </Suspense >
+        </ErrorBoundary>
 
-    
-        <Layout>
-      {/* グロナビ */}
-      <Glonavi />
-      {/* タブ */}
-      <SwiperTab />
-        </Layout>
+      </Layout>
+      }
+      </>
 
   )
 }
+
+export default Home

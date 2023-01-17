@@ -1,7 +1,7 @@
 import { useQuery } from "react-query"
 import { supabase } from "../utils/supabase"
 import useStore from "../store"
-import { Topi } from "../types/types"
+import { Topi } from "../types"
 import { useMutateTopi } from '../hooks/useMutateTopi'
 import { equal } from "assert"
 
@@ -37,7 +37,7 @@ export const useQueryTopi = () => {
             })
             update({
                 ...editedTopi,
-                //name: session?.user?.id,
+                id: session?.user?.id,
             })
         }
 

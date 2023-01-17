@@ -62,7 +62,7 @@ export const SpecialTopiTitle:FC = () => {
     
     return (
         <>
-            {topis.map((topi) => {
+            {/* {topis.map((topi) => {
                 const topiInfo = {
                     id: topi.id,
                     title: topi.title,
@@ -77,28 +77,29 @@ export const SpecialTopiTitle:FC = () => {
                 };
 
                 console.log(topiInfo.created_at)
-                return (
-                    <div key={topi.id}>
+                return ( */}
+            
+                    <div key={topi?.id}>
 
-{topiInfo.created_at === 'undefined' ?  <Spinner /> :
-                        <Link as={`articles/${topi.id}`} href={{ pathname: `articles/[article]`, query: topiInfo }}>
+{topi?.created_at === 'undefined' ?  <Spinner /> :
+                        <Link as={`articles/${topi?.id}`} href='/'>
                             <article className={classes.article}>
                                 <div>
-                                    <Image src={topiInfo.titleImg} alt="" width={52} height={52} />
+                                    <Image src={hiUrl} alt="" width={52} height={52} />
                                 </div>
 
                                 <div className={classes.topi}>
 
-                                    <h1 className={classes.topi_title}>{topiInfo.title}</h1>
-                                     {topiInfo.created_at && (<p className={classes.topi_time_special}>{format(new Date(topiInfo.created_at), 'MM/dd(E) HH:mm', { locale: ja })}</p>)} 
+                                    <h1 className={classes.topi_title}>{topi?.title}</h1>
+                                     {topi?.created_at && (<p className={classes.topi_time_special}>{format(new Date(topi.created_at), 'MM/dd(E) HH:mm', { locale: ja })}</p>)} 
 
                                 </div>
                             </article>
                         </Link>
             }
                     </div>
-                )
-            })}
+                {/* )
+            })} */}
 
 
             </>
