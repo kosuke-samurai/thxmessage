@@ -55,7 +55,7 @@ export const SpecialTopiTitle:FC = () => {
                         <Link href='/specialArticle'>
                             <article className={classes.article}>
                                 <div>
-                                    <Image src={hiUrl} alt='hi' width={52} height={52} />
+                                    <Image src={hiUrl} alt='' width={52} height={52} />
                                 </div>
 
                                 <div className={classes.topi}>

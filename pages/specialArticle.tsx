@@ -17,7 +17,6 @@ import { Glonavi } from '../components/Glonavi'
 import { SwiperTab } from '../components/SwiperTab'
 
 //追記
-import { AdminAuth } from "../components/AdminAuth"
 import Auth from './login'
 
 import { SpecialArticleTopi } from '../components/SpecialArticleTopi'
