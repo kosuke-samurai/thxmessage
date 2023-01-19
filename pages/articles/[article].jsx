@@ -11,7 +11,7 @@ import { useState } from 'react';
 //追記
 import Head from 'next/head'
 import useStore from "../../store"
-import { useEffect, useReducer } from "react"
+import { useEffect, useRef } from "react"
 import { supabase } from '../../utils/supabase' 
 
 // import { FC, Suspense } from 'react'
@@ -32,12 +32,20 @@ const Article = () =>{
     const session = useStore((state) => state.session)
     const setSession = useStore((state) => state.setSession)
  
+    const isFirstRender = useRef(false)
+
    useEffect(() => {
         setSession(supabase.auth.session())
         supabase.auth.onAuthStateChange((_event, session) => {
             setSession(session)
         })
-       
+      
+    //作業中↓
+    isFirstRender.current = true
+    const Jsonquery = JSON.stringify(router.query);
+    localStorage.setItem(`info${router.query.id}`, Jsonquery);
+    console.log('あり');
+    //作業中↑  
     }, [setSession])
     
 
@@ -48,11 +56,13 @@ const Article = () =>{
 
     const articlenumber = router.query.article;
     console.log(articlenumber);
-
+console.log(topiinfo);
 
     //作業中
+
+
     useEffect(() => {
-    if (articlenumber !== "") {
+    if (isFirstRender.current) {
 
 if(info.title){
     const Jsonquery = JSON.stringify(router.query);
@@ -70,7 +80,7 @@ if(info.title){
 
     return (
     <>
-             { !articlenumber ? <Spinner /> :
+             { !topiinfo ? <Spinner /> :
                 !session ? <Auth /> :
                     
                 <Layout>
