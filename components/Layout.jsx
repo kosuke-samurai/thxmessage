@@ -72,7 +72,8 @@ export function Layout({ children }) {
 
 
         const signOut =()=> {
-        supabase.auth.signOut()
+            supabase.auth.signOut()
+            localStorage.clear()
     }
 
     return (

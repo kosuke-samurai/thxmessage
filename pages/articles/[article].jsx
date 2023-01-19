@@ -6,6 +6,7 @@ import AssignmentIcon from '@mui/icons-material/Assignment';
 import { useRouter } from 'next/router';
 import { format } from "date-fns"
 import ja from "date-fns/locale/ja"
+import { useState } from 'react';
 
 //追記
 import Head from 'next/head'
@@ -25,6 +26,7 @@ import Auth from '../login'
 // import { SpecialArticleTopi } from '../components/SpecialArticleTopi'
 
 
+
 const Article = () =>{
     //セッション判定
     const session = useStore((state) => state.session)
@@ -41,26 +43,28 @@ const Article = () =>{
 
     const router = useRouter();
     console.log(router.query);
-    const info = router.query;
+    const [info, setInfo] = useState(router.query);
 
     const articlenumber = router.query.article;
     console.log(articlenumber);
 
 
     //作業中
-    if (typeof window !== "undefined") {
+    useEffect(() => {
+    if (articlenumber !== "") {
 
 if(info.title){
     const Jsonquery = JSON.stringify(router.query);
     localStorage.setItem(`info${router.query.id}`, Jsonquery);
     console.log('あり');
+
 } else {
-    const info = JSON.parse(localStorage.getItem(`info${articlenumber}`));
-    console.log(info.meinImg);
-    console.log('なし');
-}
-    
+    setInfo(JSON.parse(localStorage.getItem(`info${articlenumber}`)));
+        console.log('なし');
+        }
+        
     }
+    }, [articlenumber]);
 
 
 
@@ -68,7 +72,8 @@ if(info.title){
 
     return (
     <>
-            {!session ? <Auth /> :
+            { articlenumber=== 'undefined' ? <Spinner /> :
+                !session ? <Auth /> :
                     
                 <Layout>
 
