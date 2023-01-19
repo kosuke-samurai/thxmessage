@@ -43,7 +43,8 @@ const Article = () =>{
 
     const router = useRouter();
     console.log(router.query);
-    const [info, setInfo] = useState(router.query);
+    const info = router.query;
+    const [topiinfo, setTopiinfo] = useState(router.query);
 
     const articlenumber = router.query.article;
     console.log(articlenumber);
@@ -59,7 +60,7 @@ if(info.title){
     console.log('あり');
 
 } else {
-    setInfo(JSON.parse(localStorage.getItem(`info${articlenumber}`)));
+    setTopiinfo(JSON.parse(localStorage.getItem(`info${articlenumber}`)));
         console.log('なし');
         }
         
@@ -78,19 +79,19 @@ if(info.title){
 
                             <div className={classes.article_detail}>
                                 <div className={classes.image_container}>
-                                    <Image src={info.meinImg} alt="" layout="fill" className={classes.image} />
+                                    {topiinfo.meinImg ? <Image src={topiinfo.meinImg} alt="" layout="fill" className={classes.image} /> : ""}
                                 </div>
 
                                 <div className=''>
-                                    <h1 className={classes.article_title}>{info.title}</h1>
-                                    {info.created_at && (<p className={classes.topi_time}>{format(new Date(info.created_at), 'MM/dd(E) HH:mm', { locale: ja })}</p>)}
+                                    <h1 className={classes.article_title}>{topiinfo.title}</h1>
+                                    {topiinfo.created_at && (<p className={classes.topi_time}>{format(new Date(topiinfo.created_at), 'MM/dd(E) HH:mm', { locale: ja })}</p>)}
                                 </div>
 
                             </div>
 
                             <div className={classes.article_lead}>
                                 <p className={classes.article_detail_text}>
-                                    {info.lead}
+                                    {topiinfo.lead}
                                 </p>
                             </div>
 
@@ -102,11 +103,11 @@ if(info.title){
 
                                 <div>
                                     <dl className={classes.kokopoi_detail}>
-                                        <dt className={classes.dt}>{info.question}</dt>
+                                        <dt className={classes.dt}>{topiinfo.question}</dt>
                                         <dd className={classes.kokopoi_detail_qa}>
                                             <div>A.</div>
                                             <div>
-                                                {info.answer}
+                                                {topiinfo.answer}
                                             </div>
                                         </dd>
                                     </dl>
@@ -114,10 +115,10 @@ if(info.title){
 
 
                                     <dl className={classes.kokopoi_detail}>
-                                        <dt className={classes.dt}>{info.phototitle}</dt>
+                                        <dt className={classes.dt}>{topiinfo.phototitle}</dt>
                                         <dd className={classes.img_center}>
                                             <div className={classes.image_container}>
-                                                <Image src={info.photo} alt="" layout="fill" className={classes.image} />
+                                                {topiinfo.photo ? <Image src={topiinfo.photo} alt="" layout="fill" className={classes.image} /> : ""}
                                             </div>
                                         </dd>
                                     </dl>
