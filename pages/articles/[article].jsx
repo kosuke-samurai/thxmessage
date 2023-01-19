@@ -65,14 +65,11 @@ if(info.title){
         
     }
     }, [articlenumber]);
-
-
-
    //作業中↑
 
     return (
     <>
-            { articlenumber=== 'undefined' ? <Spinner /> :
+             { !articlenumber ? <Spinner /> :
                 !session ? <Auth /> :
                     
                 <Layout>
@@ -135,7 +132,7 @@ if(info.title){
                     </Layout>
 
             }
-            </>
+             </>   
     )
 }
 
