@@ -30,7 +30,7 @@ import { Spinner } from './Sppiner';
       id: 2,
       name: '土竜が俺を呼んでいる',
       adress: '福岡県福岡市中央区大名1-9-18',
-      category: '居酒屋',
+      category: 'ラーメン',
       hitokoto: '焼酎めっちゃある。締めのラーメンオススメ。※喫煙OK',
       detail: 'https://tabelog.com/fukuoka/A4001/A400104/40020106/'
     },
@@ -140,7 +140,7 @@ export const GetStore = () => {
             lat: marker.lat,
             lng: marker.lng,
           }}
-          onMouseOver={() => {
+          onClick={() => {
             setSelected(marker);
             // マウスオーバーで<InfoWindow>が描画されます。
           }}
@@ -171,44 +171,59 @@ export const GetStore = () => {
          }    
     
     {/* } */}
-        
-        {!STOREINFOS ? <Spinner /> :
-        
-          STOREINFOS[0].map((storeinfo) => {
-            const InfoStore = {
-              id: storeinfo.id,
-              name: storeinfo.name,
-              adress: storeinfo.adress,
-              category: storeinfo.category,
-              hitokoto: storeinfo.hitokoto,
-              detail: storeinfo.detail
-            };
-            return (
-              <>
-                {InfoStore.category === '居酒屋' ? 
-                  <React.Fragment>
-                <h1>飲み直し</h1>
-                <p>{InfoStore.name}</p> 
-                  </React.Fragment> :
-                  InfoStore.category === '純喫茶' ?
-                    <React.Fragment>
-                      <h2>お酒なし</h2>
-                      <p>{InfoStore.name}</p> 
-                    </React.Fragment> :
-                    InfoStore.category === 'ガッツリ' ?
-                    <React.Fragment>
-                        <h2>食べ足りない</h2>
-                        <p>{InfoStore.name}</p> 
-                    </React.Fragment> :
-                    <React.Fragment>
-                        <h2>その他</h2>
-                        <p>{InfoStore.name}</p> 
-                    </React.Fragment>
-}
-              </>) 
-        })
-        }
 
+        {!STOREINFOS ? <Spinner /> :
+          <React.Fragment>
+
+          <h1 className="text-lg block font-bold">飲み直し</h1>
+            {STOREINFOS[0].map((storeinfo) => {
+              if (storeinfo.category === '居酒屋') {
+                return (
+                  <ul>
+                    <li>{storeinfo.name}</li>
+                  </ul>
+                  )
+              }
+  
+})}
+            <h1 className="text-lg block font-bold">お酒なし</h1>
+            {STOREINFOS[0].map((storeinfo) => {
+              if (storeinfo.category === '純喫茶') {
+                return (
+                  <ul>
+                    <li>{storeinfo.name}</li>
+                  </ul>
+                  )
+              }
+  
+})}
+            
+            <h1 className="text-lg block font-bold">食べ足りない</h1>
+            {STOREINFOS[0].map((storeinfo) => {
+              if (storeinfo.category === 'ガッツリ') {
+                return (
+                  <ul>
+                    <li>{storeinfo.name}</li>
+                  </ul>
+                )
+              }
+  
+})}
+            
+          <h1 className="text-lg block font-bold">その他</h1>  
+            {STOREINFOS[0].map((storeinfo) => {
+              if (storeinfo.category !== 'ガッツリ' && storeinfo.category !=='純喫茶' && storeinfo.category !=='居酒屋') {
+                return (
+                  <ul>
+                    <li>{storeinfo.name}</li>
+                  </ul>
+                )
+              }
+  
+})}
+
+          </React.Fragment>
+}
 
         
       </div>
