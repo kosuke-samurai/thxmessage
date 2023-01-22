@@ -15,6 +15,6 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "components/Glonavi.jsx", "components/Layouta", "components/Layout.tsx", "pages/articles/[article].jsx", "pages/articles/[article].jsx", "pages/articles/[article].jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "components/Glonavi.jsx", "components/Layouta", "components/Layout.tsx", "pages/nijikai.jsx", "components/Store.jsx", "components/Store.jsx", "components/Store.jsx", "pages/articles/[article].jsx", "pages/articles/[article].jsx", "pages/articles/[article].jsx"],
   "exclude": ["node_modules"]
 }

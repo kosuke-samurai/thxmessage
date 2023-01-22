@@ -58,7 +58,7 @@ const Article = () =>{
     console.log(articlenumber);
 console.log(topiinfo);
 
-    //作業中
+    //作業中（完了）
 
 
     useEffect(() => {
@@ -76,7 +76,7 @@ if(info.title){
         
     }
     }, [articlenumber]);
-   //作業中↑
+   //作業中↑（完了）
 
     return (
     <>

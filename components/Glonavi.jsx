@@ -85,7 +85,7 @@ export function Glonavi() {
                 <ButtonGroup variant="text" color='inherit' aria-label="text button group" fullWidth={true}>
                     <Button><Box sx={{ flexDirection: 'column' }}><Item><SmokingRoomsIcon sx={{ color: pink[500] }} /></Item><Item>喫煙所</Item></Box></Button>
                     <Button><Box sx={{ flexDirection: 'column' }}><Item><WbSunnyIcon sx={{ color: pink[500] }} /></Item><Item>天気</Item></Box></Button>
-                    <Button><Box sx={{ flexDirection: 'column' }}><Item><LocalBarIcon sx={{ color: pink[500] }} /></Item><Item>二次会</Item></Box></Button>
+                    <Button><Link href={{ pathname: `nijikai`}}><Box sx={{ flexDirection: 'column' }}><Item><LocalBarIcon sx={{ color: pink[500] }} /></Item><Item>二次会</Item></Box></Link></Button>
                     <Button><Link href='https://transit.yahoo.co.jp/?from=%E8%A5%BF%E9%89%84%E7%A6%8F%E5%B2%A1&to=&fromgid=&togid=&flatlon=%2C%2C28273&tlatlon=&via=&viacode=&y=2022&m=12&d=12&hh=17&m1=2&m2=3&type=1&ticket=ic&expkind=1&userpass=1&ws=3&s=0&al=1&shin=1&ex=1&hb=1&lb=1&sr=1'><Box sx={{ flexDirection: 'column' }}><Item><TrainIcon sx={{ color: pink[500] }} /></Item><Item>帰路</Item></Box></Link></Button>
                 </ButtonGroup>
 
