@@ -179,9 +179,11 @@ export const GetStore = () => {
             {STOREINFOS[0].map((storeinfo) => {
               if (storeinfo.category === '居酒屋') {
                 return (
-                  <ul>
-                    <li>{storeinfo.name}</li>
-                  </ul>
+                  <div key={storeinfo.id}>
+                    <ul>
+                      <li>{storeinfo.name}</li>
+                    </ul>
+                  </div>
                   )
               }
   
@@ -190,9 +192,11 @@ export const GetStore = () => {
             {STOREINFOS[0].map((storeinfo) => {
               if (storeinfo.category === '純喫茶') {
                 return (
-                  <ul>
-                    <li>{storeinfo.name}</li>
-                  </ul>
+                  <div key={storeinfo.id}>
+                    <ul>
+                      <li>{storeinfo.name}</li>
+                    </ul>
+                  </div>
                   )
               }
   
@@ -202,9 +206,11 @@ export const GetStore = () => {
             {STOREINFOS[0].map((storeinfo) => {
               if (storeinfo.category === 'ガッツリ') {
                 return (
-                  <ul>
-                    <li>{storeinfo.name}</li>
-                  </ul>
+                  <div key={storeinfo.id}>
+                    <ul>
+                      <li>{storeinfo.name}</li>
+                    </ul>
+                  </div>
                 )
               }
   
@@ -214,9 +220,11 @@ export const GetStore = () => {
             {STOREINFOS[0].map((storeinfo) => {
               if (storeinfo.category !== 'ガッツリ' && storeinfo.category !=='純喫茶' && storeinfo.category !=='居酒屋') {
                 return (
-                  <ul>
-                    <li>{storeinfo.name}</li>
-                  </ul>
+                  <div key={storeinfo.id}>
+                    <ul>
+                      <li>{storeinfo.name}</li>
+                    </ul>
+                  </div>
                 )
               }
   
