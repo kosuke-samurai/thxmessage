@@ -84,14 +84,13 @@ if(info.title){
                 !session ? <Auth /> :
                     
                 <Layout>
-
-                        <main id="article_main" className={classes.article_main}>
-
+                            
+                    <div className={classes.image_container}>
+                        {topiinfo.meinImg ? <Image src={topiinfo.meinImg} alt="" layout="fill" className={classes.image} /> : ""}
+                    </div>
+                        
+                 <main id="article_main" className={classes.article_main}>
                             <div className={classes.article_detail}>
-                                <div className={classes.image_container}>
-                                    {topiinfo.meinImg ? <Image src={topiinfo.meinImg} alt="" layout="fill" className={classes.image} /> : ""}
-                                </div>
-
                                 <div className=''>
                                     <h1 className={classes.article_title}>{topiinfo.title}</h1>
                                     {topiinfo.created_at && (<p className={classes.topi_time}>{format(new Date(topiinfo.created_at), 'MM/dd(E) HH:mm', { locale: ja })}</p>)}

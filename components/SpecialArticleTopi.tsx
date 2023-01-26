@@ -48,14 +48,12 @@ export const SpecialArticleTopi: FC = () => {
   return (
       <>
            <div key={topi?.id}>
-
+                <div className={classes.image_container}>
+                    <Image src={mainUrl} alt="" layout="fill" className={classes.image} />
+                 </div>
+              
             <main className={classes.article_main}>
-
                 <div className={classes.article_detail}>
-                    <div className={classes.image_container}>
-                        <Image src={mainUrl} alt="" layout="fill" className={classes.image} />
-                    </div>
-
                     <div className=''>
                         <h1 className={classes.article_title}>{topi?.title}</h1>
                         {/* <p className={classes.topi_time}>11/17（金）17:29</p> */}
