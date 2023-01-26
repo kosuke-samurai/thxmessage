@@ -30,7 +30,7 @@ import { Spinner } from './Sppiner';
       id: 2,
       name: '土竜が俺を呼んでいる',
       adress: '福岡県福岡市中央区大名1-9-18',
-      category: 'ラーメン',
+      category: '居酒屋',
       hitokoto: '焼酎めっちゃある。締めのラーメンオススメ。※喫煙OK',
       detail: 'https://tabelog.com/fukuoka/A4001/A400104/40020106/'
     },
@@ -48,8 +48,12 @@ export const GetStore = () => {
   const storearray = [];
   const newstorearray = [];
 
+  const [visible, SetVisible] = useState(true);
+
   function geocode() {
     
+    SetVisible(false);
+
     STORES.map((store) => {
       const place = store.adress;
       const geocoder = new window.google.maps.Geocoder();
@@ -114,14 +118,18 @@ export const GetStore = () => {
   return (
      <React.Fragment>
         <div>
-           <input type="text"
-        />
-        <button onClick={geocode}>緯度経度コンソール</button>
-          
+
+        {visible ? 
+          <div className='flex justify-center my-2.5'>
+          <button onClick={geocode} className='bg-blue hover:bg-blue-700 text-white font-bold py-2 px-4'>お店を探す</button>
+          </div> : null}
       
         
         {/* {!isFirstRender ? <Spinner /> :   */}
-        {!STOREINFOS ? <Spinner /> :
+        {!STOREINFOS ? null :
+    <div>
+          <h1 className='pt-2 my-auto text-2xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl text-center'><span className="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">地図から探す</span></h1>
+          
       <GoogleMap
         id="map"
         mapContainerStyle={containerStyle}
@@ -162,74 +170,109 @@ export const GetStore = () => {
                 <ul>
                   <li>{selected.name}</li>
                   <li>ジャンル：{selected.category}</li>
-                  <li><Link href={selected.detail}>詳細</Link></li>
+                  <li><Link className='text-blue dark:text-blue hover:underline' href={selected.detail}>詳細（外部リンク）</Link></li>
                   </ul>
         </InfoWindow>
           ) : null}
           
-      </GoogleMap>
+            </GoogleMap>
+     </div>
          }    
     
     {/* } */}
 
-        {!STOREINFOS ? <Spinner /> :
+        {!STOREINFOS ? null :
           <React.Fragment>
+            <h1 className='pt-4 my-auto text-2xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl text-center'><span className="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">ジャンルから探す</span></h1>
 
-          <h1 className="text-lg block font-bold">飲み直し</h1>
+          <div className='px-2'>
+          <h2 className="text-lg block font-bold">飲み直し</h2>
             {STOREINFOS[0].map((storeinfo) => {
               if (storeinfo.category === '居酒屋') {
                 return (
                   <div key={storeinfo.id}>
-                    <ul>
-                      <li>{storeinfo.name}</li>
-                    </ul>
+                    <ol className="space-y-4 text-gray-500 list-inside dark:text-gray-400">
+                      <li className='pb-2'>
+                        {storeinfo.name}
+                          <ul className="pl-5 space-y-1 list-disc list-inside">
+                            <li>ジャンル：{storeinfo.category}</li>
+                            <li>特徴：{storeinfo.hitokoto}</li>
+                            <li>住所：{storeinfo.adress}</li>
+                            <li><Link className='font-medium text-blue dark:text-blue hover:underline' href={storeinfo.detail}>詳細（外部リンク）</Link></li>
+                          </ul>
+                      </li>
+                    </ol>
                   </div>
                   )
               }
   
 })}
-            <h1 className="text-lg block font-bold">お酒なし</h1>
+            <h2 className="text-lg block font-bold">お酒なし</h2>
             {STOREINFOS[0].map((storeinfo) => {
               if (storeinfo.category === '純喫茶') {
                 return (
                   <div key={storeinfo.id}>
-                    <ul>
-                      <li>{storeinfo.name}</li>
-                    </ul>
+                    <ol className="space-y-4 text-gray-500 list-inside dark:text-gray-400">
+                      <li className='pb-2'>
+                        {storeinfo.name}
+                          <ul className="pl-5 space-y-1 list-disc list-inside">
+                            <li>ジャンル：{storeinfo.category}</li>
+                            <li>特徴：{storeinfo.hitokoto}</li>
+                            <li>住所：{storeinfo.adress}</li>
+                            <li><Link className='font-medium text-blue dark:text-blue hover:underline' href={storeinfo.detail}>詳細（外部リンク）</Link></li>
+                          </ul>
+                      </li>
+                    </ol>
                   </div>
                   )
               }
   
 })}
             
-            <h1 className="text-lg block font-bold">食べ足りない</h1>
+            <h2 className="text-lg block font-bold">食べ足りない</h2>
             {STOREINFOS[0].map((storeinfo) => {
               if (storeinfo.category === 'ガッツリ') {
                 return (
                   <div key={storeinfo.id}>
-                    <ul>
-                      <li>{storeinfo.name}</li>
-                    </ul>
+                    <ol className="space-y-4 text-gray-500 list-inside dark:text-gray-400">
+                      <li className='pb-2'>
+                        {storeinfo.name}
+                          <ul className="pl-5 space-y-1 list-disc list-inside">
+                            <li>ジャンル：{storeinfo.category}</li>
+                            <li>特徴：{storeinfo.hitokoto}</li>
+                            <li>住所：{storeinfo.adress}</li>
+                            <li><Link className='font-medium text-blue dark:text-blue hover:underline' href={storeinfo.detail}>詳細（外部リンク）</Link></li>
+                          </ul>
+                      </li>
+                    </ol>
                   </div>
                 )
               }
   
 })}
             
-          <h1 className="text-lg block font-bold">その他</h1>  
+          <h2 className="text-lg block font-bold">その他</h2>  
             {STOREINFOS[0].map((storeinfo) => {
               if (storeinfo.category !== 'ガッツリ' && storeinfo.category !=='純喫茶' && storeinfo.category !=='居酒屋') {
                 return (
                   <div key={storeinfo.id}>
-                    <ul>
-                      <li>{storeinfo.name}</li>
-                    </ul>
+                    <ol className="space-y-4 text-gray-500 list-inside dark:text-gray-400">
+                      <li className='pb-2'>
+                        {storeinfo.name}
+                          <ul className="pl-5 space-y-1 list-disc list-inside">
+                            <li>ジャンル：{storeinfo.category}</li>
+                            <li>特徴：{storeinfo.hitokoto}</li>
+                            <li>住所：{storeinfo.adress}</li>
+                            <li><Link className='font-medium text-blue dark:text-blue hover:underline' href={storeinfo.detail}>詳細（外部リンク）</Link></li>
+                          </ul>
+                      </li>
+                    </ol>
                   </div>
                 )
               }
   
 })}
-
+</div>
           </React.Fragment>
 }
 
