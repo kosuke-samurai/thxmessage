@@ -1,9 +1,10 @@
 import React, { useEffect,useRef } from 'react'
 import { useState } from 'react';
 import Link from 'next/link';
+import { FadeIn } from './FadeIn';
 
 
-import { GoogleMap, LoadScript, Marker, InfoWindow, useLoadScript } from '@react-google-maps/api';
+import { GoogleMap, Marker, InfoWindow, useLoadScript } from '@react-google-maps/api';
 import { useCallback } from 'react';
 import { Spinner } from './Sppiner';
 
@@ -183,8 +184,9 @@ export const GetStore = () => {
 
         {!STOREINFOS ? null :
           <React.Fragment>
+            
             <h1 className='pt-4 my-auto text-2xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl text-center'><span className="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">ジャンルから探す</span></h1>
-
+<FadeIn>
           <div className='px-2'>
           <h2 className="text-lg block font-bold">飲み直し</h2>
             {STOREINFOS[0].map((storeinfo) => {
@@ -272,7 +274,8 @@ export const GetStore = () => {
               }
   
 })}
-</div>
+              </div>
+            </FadeIn>
           </React.Fragment>
 }
 

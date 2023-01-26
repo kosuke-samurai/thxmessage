@@ -22,7 +22,8 @@ import {Hooter} from './Hooter'
 //追記
 import useStore from '../store';
 import { useEffect } from 'react';
-import {AttendName} from './AttendName'
+import { AttendName } from './AttendName'
+import {SlideInLeft} from './FadeInName'
 
 
 
@@ -80,7 +81,9 @@ export function Layout({ children }) {
         <div>
             <header className={classes.header}>
 
-                <AttendName />
+                <SlideInLeft>
+                    <AttendName />    
+                </SlideInLeft>
 
                 <Typography component="div">
                     <ButtonGroup variant='' color='inherit' >

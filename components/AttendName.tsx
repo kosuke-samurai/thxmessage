@@ -44,7 +44,9 @@ export const AttendName: FC = () => {
   
  
   return (
-        <div>
+    <div>
+      
+      {/* <h2 className={classes.attend_name_design}>{topi?.name}さまへ</h2> */}
                 <div className={classes.search_container}>
                     <input type="text"  value={topi?.name} readOnly />
                     <input type="submit" value="さまへ" disabled />
