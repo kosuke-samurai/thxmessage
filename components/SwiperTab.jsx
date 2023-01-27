@@ -20,6 +20,7 @@ import { SpecialTopiTitle } from "./SpecialTopiTitle";
 import { AttachEmail } from "@mui/icons-material";
 
 //追記
+import {Timeline} from '../components/ChatGPTTimeline'
 
 
 
@@ -108,7 +109,7 @@ export const SwiperTab = () => {
                 </SwiperSlide>
                 <SwiperSlide>思い出<OppositeContentTimeline /></SwiperSlide>
                 <SwiperSlide>未来<TopiTitle /></SwiperSlide>
-                <SwiperSlide>写真</SwiperSlide>
+                <SwiperSlide><Timeline /></SwiperSlide>
             </Swiper>
         </>
     );
