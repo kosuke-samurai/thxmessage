@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import classes from './ChatGPTTimeline.module.css'
-import Image from 'next/image';
+import { FadeIn } from './FadeIn';
 
 const events = [
   { date: '2010-01-01', title: 'Event 1', description: 'This is the first event' },
@@ -13,7 +13,7 @@ export const Timeline = () => {
 
     return (
         <>
-        <div >
+        <div>
             {/* <Image src='/img/timeline/newspaper.png' alt="" height={80} width={400} /> */}
             <div className={classes.title}>  
                 <div className={classes.title_text_box}>
@@ -26,7 +26,7 @@ export const Timeline = () => {
             </div>
         </div>
      
-     
+  <FadeIn>
     <ul className={classes.timeline}>
       {events.map((event, index) => (
         <li key={index} onClick={() => setSelectedEvent(event)}>
@@ -37,7 +37,8 @@ export const Timeline = () => {
           </div>
         </li>
       ))}
-            </ul>
+     </ul>
+  </FadeIn>
 </>
   );
 };
